@@ -1,0 +1,778 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>The Raising Bilinguals Podcast — Coming Soon</title>
+  <meta name="description" content="Something big is coming for bilingual families. Get early access to The Raising Bilinguals community and app — sign up to be the first to know.">
+  <style>
+    /* ── FONTS ─────────────────────────────────────────────── */
+    @font-face {
+      font-family: 'Belanosima';
+      src: url('FUENTES/Belanosima/Belanosima-Regular.ttf') format('truetype');
+      font-weight: 400;
+      font-display: swap;
+    }
+    @font-face {
+      font-family: 'Belanosima';
+      src: url('FUENTES/Belanosima/Belanosima-SemiBold.ttf') format('truetype');
+      font-weight: 600;
+      font-display: swap;
+    }
+    @font-face {
+      font-family: 'Belanosima';
+      src: url('FUENTES/Belanosima/Belanosima-Bold.ttf') format('truetype');
+      font-weight: 700;
+      font-display: swap;
+    }
+    @font-face {
+      font-family: 'Quicksand';
+      src: url('FUENTES/Quicksand/Quicksand-VariableFont_wght.ttf') format('truetype');
+      font-weight: 300 700;
+      font-display: swap;
+    }
+
+    /* ── TOKENS ────────────────────────────────────────────── */
+    :root {
+      --green:   #003E15;
+      --yellow:  #DEDC00;
+      --lgreen:  #A1C861;
+      --red:     #E83A41;
+      --dark:    #262A23;
+      --cream:   #E5EAD0;
+      --white:   #FFFFFF;
+      --r-lg:    24px;
+      --r-pill:  100px;
+    }
+
+    /* ── RESET ─────────────────────────────────────────────── */
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: 'Quicksand', sans-serif;
+      background: var(--cream);
+      color: var(--dark);
+      overflow-x: hidden;
+    }
+    img { display: block; max-width: 100%; }
+    a { text-decoration: none; }
+
+    /* ── UTILITY ───────────────────────────────────────────── */
+    .container { max-width: 1060px; margin: 0 auto; padding: 0 32px; }
+
+    .tag {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-family: 'Quicksand', sans-serif;
+      font-weight: 700;
+      font-size: 11px;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      padding: 6px 16px;
+      border-radius: var(--r-pill);
+    }
+    .tag-green  { background: var(--green);  color: var(--yellow); }
+    .tag-yellow { background: var(--yellow); color: var(--green); }
+    .tag-light  { background: var(--lgreen); color: var(--green); }
+
+    /* ── MINIMAL NAV ───────────────────────────────────────── */
+    .nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 999;
+      background: rgba(229, 234, 208, .96);
+      backdrop-filter: blur(12px);
+      border-bottom: 2px solid rgba(0,62,21,.1);
+      padding: 14px 40px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .nav-logo img { height: 46px; }
+
+    /* ── HERO IMAGE — full width ───────────────────────────── */
+    .hero-image {
+      margin-top: 74px;
+      width: 100%;
+      max-height: 90vh;
+      overflow: hidden;
+      position: relative;
+    }
+    .hero-image img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center top;
+      display: block;
+    }
+    .hero-image-badge {
+      position: absolute;
+      bottom: 32px;
+      left: 40px;
+      background: var(--green);
+      border-radius: 18px;
+      padding: 14px 22px;
+    }
+    .hero-image-badge-label {
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      color: var(--lgreen);
+      margin-bottom: 3px;
+    }
+    .hero-image-badge-value {
+      font-family: 'Belanosima', sans-serif;
+      font-size: 18px;
+      color: var(--yellow);
+    }
+
+    /* ── STRIP / MARQUEE ───────────────────────────────────── */
+    .strip {
+      background: var(--green);
+      padding: 16px 0;
+      overflow: hidden;
+      white-space: nowrap;
+    }
+    .strip-track {
+      display: inline-flex;
+      gap: 48px;
+      animation: marquee 24s linear infinite;
+    }
+    .strip-item {
+      font-family: 'Belanosima', sans-serif;
+      font-size: 17px;
+      color: var(--yellow);
+      display: flex;
+      align-items: center;
+      gap: 16px;
+    }
+    .strip-item::after {
+      content: '✦';
+      color: var(--lgreen);
+      font-size: 11px;
+    }
+    @keyframes marquee {
+      from { transform: translateX(0); }
+      to   { transform: translateX(-50%); }
+    }
+
+    /* ── INTRO SECTION ─────────────────────────────────────── */
+    .intro {
+      background: var(--cream);
+      padding: 96px 0 80px;
+    }
+    .intro-inner {
+      max-width: 760px;
+    }
+    .coming-soon-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: var(--red);
+      color: var(--white);
+      font-family: 'Quicksand', sans-serif;
+      font-weight: 700;
+      font-size: 11px;
+      letter-spacing: 2.5px;
+      text-transform: uppercase;
+      padding: 6px 16px;
+      border-radius: var(--r-pill);
+      margin-bottom: 28px;
+      animation: pulse 2.4s ease-in-out infinite;
+    }
+    @keyframes pulse {
+      0%, 100% { opacity: 1; }
+      50% { opacity: .7; }
+    }
+    .intro-title {
+      font-family: 'Belanosima', sans-serif;
+      font-weight: 400;
+      font-size: clamp(38px, 5.5vw, 68px);
+      line-height: 1.06;
+      color: var(--green);
+      margin-bottom: 28px;
+    }
+    .intro-title em {
+      font-style: normal;
+      color: var(--red);
+    }
+    .intro-lead {
+      font-size: 18px;
+      line-height: 1.85;
+      font-weight: 500;
+      color: var(--dark);
+      margin-bottom: 44px;
+      max-width: 660px;
+    }
+
+    /* Platform pills */
+    .platforms-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      align-items: center;
+    }
+    .platforms-label {
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      color: var(--green);
+      opacity: .6;
+      margin-right: 4px;
+    }
+    .platform-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: var(--green);
+      color: var(--yellow);
+      font-family: 'Quicksand', sans-serif;
+      font-weight: 700;
+      font-size: 13px;
+      padding: 9px 18px;
+      border-radius: var(--r-pill);
+    }
+    .platform-pill svg { width: 16px; height: 16px; flex-shrink: 0; }
+
+    /* ── WHAT'S COMING ─────────────────────────────────────── */
+    .whats-coming {
+      background: var(--green);
+      padding: 96px 0;
+    }
+    .section-label { display: block; margin-bottom: 18px; }
+    .section-title {
+      font-family: 'Belanosima', sans-serif;
+      font-weight: 400;
+      line-height: 1.1;
+      font-size: clamp(30px, 4vw, 48px);
+      margin-bottom: 20px;
+    }
+    .whats-coming .section-title { color: var(--yellow); text-align: center; }
+    .whats-coming .section-sub {
+      font-size: 17px;
+      line-height: 1.8;
+      font-weight: 500;
+      color: var(--lgreen);
+      text-align: center;
+      max-width: 560px;
+      margin: 0 auto 60px;
+    }
+
+    .coming-cards {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+    }
+    .coming-card {
+      background: rgba(255,255,255,.05);
+      border: 1.5px solid rgba(222,220,0,.2);
+      border-radius: var(--r-lg);
+      padding: 40px 32px;
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+      transition: background .25s, border-color .25s, transform .25s;
+    }
+    .coming-card:hover {
+      background: rgba(255,255,255,.08);
+      border-color: var(--yellow);
+      transform: translateY(-6px);
+    }
+    .coming-card-icon { font-size: 38px; line-height: 1; }
+    .coming-card-label {
+      display: inline-flex;
+      background: rgba(222,220,0,.12);
+      border: 1px solid rgba(222,220,0,.3);
+      color: var(--yellow);
+      font-family: 'Quicksand', sans-serif;
+      font-weight: 700;
+      font-size: 10px;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      padding: 4px 12px;
+      border-radius: var(--r-pill);
+      width: fit-content;
+    }
+    .coming-card-title {
+      font-family: 'Belanosima', sans-serif;
+      font-size: 26px;
+      color: var(--yellow);
+    }
+    .coming-card-text {
+      font-size: 15px;
+      line-height: 1.75;
+      color: var(--lgreen);
+      font-weight: 500;
+      flex: 1;
+    }
+
+    /* ── ABOUT STRIP ───────────────────────────────────────── */
+    .about-strip {
+      background: var(--yellow);
+      padding: 80px 0;
+    }
+    .about-strip-inner {
+      display: flex;
+      align-items: center;
+      gap: 56px;
+    }
+    .about-hosts {
+      display: flex;
+      flex-shrink: 0;
+    }
+    .host-thumb {
+      width: 120px;
+      height: 120px;
+      border-radius: 50%;
+      overflow: hidden;
+      border: 4px solid var(--green);
+      margin-right: -20px;
+      flex-shrink: 0;
+      box-shadow: 0 8px 24px rgba(0,62,21,.2);
+    }
+    .host-thumb img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center top;
+    }
+    .about-strip-text h3 {
+      font-family: 'Belanosima', sans-serif;
+      font-size: 30px;
+      color: var(--green);
+      margin-bottom: 12px;
+      line-height: 1.2;
+    }
+    .about-strip-text p {
+      font-size: 16px;
+      line-height: 1.8;
+      font-weight: 500;
+      color: var(--green);
+      opacity: .8;
+      max-width: 560px;
+    }
+    .hts-tag {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      margin-top: 18px;
+      background: rgba(0,62,21,.1);
+      border: 1.5px solid rgba(0,62,21,.25);
+      border-radius: var(--r-pill);
+      padding: 7px 16px;
+      font-size: 13px;
+      font-weight: 700;
+      color: var(--green);
+    }
+
+    /* ── SIGN UP ───────────────────────────────────────────── */
+    .signup {
+      background: var(--cream);
+      padding: 96px 0;
+    }
+    .signup-inner {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 80px;
+      align-items: center;
+    }
+    .signup-copy .section-title { color: var(--green); }
+    .signup-copy .section-sub {
+      font-size: 17px;
+      line-height: 1.8;
+      font-weight: 500;
+      color: var(--dark);
+      margin: 20px 0 32px;
+    }
+    .perks-list { display: flex; flex-direction: column; gap: 14px; }
+    .perk-item {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      font-size: 15px;
+      font-weight: 600;
+      color: var(--green);
+    }
+    .perk-dot {
+      width: 8px; height: 8px;
+      border-radius: 50%;
+      background: var(--lgreen);
+      flex-shrink: 0;
+    }
+
+    /* Form card */
+    .signup-form-wrap {
+      background: var(--green);
+      border-radius: 28px;
+      padding: 48px 44px;
+    }
+    .signup-form-wrap h3 {
+      font-family: 'Belanosima', sans-serif;
+      font-size: 26px;
+      color: var(--yellow);
+      margin-bottom: 10px;
+      line-height: 1.2;
+    }
+    .signup-form-wrap > p {
+      font-size: 14px;
+      font-weight: 500;
+      color: var(--lgreen);
+      margin-bottom: 32px;
+      line-height: 1.6;
+    }
+    .form-group { margin-bottom: 16px; }
+    .form-group label {
+      display: block;
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      color: var(--lgreen);
+      margin-bottom: 8px;
+    }
+    .form-group input {
+      width: 100%;
+      background: rgba(255,255,255,.07);
+      border: 1.5px solid rgba(161,200,97,.35);
+      border-radius: 12px;
+      padding: 14px 18px;
+      font-family: 'Quicksand', sans-serif;
+      font-size: 15px;
+      font-weight: 500;
+      color: var(--white);
+      outline: none;
+      transition: border-color .2s, background .2s;
+    }
+    .form-group input::placeholder { color: rgba(255,255,255,.35); }
+    .form-group input:focus {
+      border-color: var(--yellow);
+      background: rgba(255,255,255,.1);
+    }
+    .form-submit {
+      width: 100%;
+      margin-top: 8px;
+      background: var(--yellow);
+      color: var(--green);
+      font-family: 'Quicksand', sans-serif;
+      font-weight: 700;
+      font-size: 16px;
+      padding: 16px;
+      border-radius: var(--r-pill);
+      border: none;
+      cursor: pointer;
+      transition: background .2s, transform .2s;
+    }
+    .form-submit:hover { background: var(--white); transform: translateY(-2px); }
+    .form-submit:disabled { opacity: .6; cursor: not-allowed; transform: none; }
+    .form-note {
+      font-size: 12px;
+      color: rgba(161,200,97,.6);
+      text-align: center;
+      margin-top: 16px;
+      font-weight: 500;
+    }
+    .form-success { display: none; text-align: center; padding: 24px 0 8px; }
+    .form-success .success-icon { font-size: 48px; margin-bottom: 16px; }
+    .form-success h4 {
+      font-family: 'Belanosima', sans-serif;
+      font-size: 26px;
+      color: var(--yellow);
+      margin-bottom: 10px;
+    }
+    .form-success p { font-size: 15px; color: var(--lgreen); margin-bottom: 0; }
+    .form-error-msg {
+      display: none;
+      font-size: 13px;
+      color: #ff8a8a;
+      text-align: center;
+      margin-top: 12px;
+      font-weight: 600;
+    }
+
+    /* ── FOOTER ────────────────────────────────────────────── */
+    footer {
+      background: var(--dark);
+      padding: 32px 40px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 20px;
+    }
+    footer img { height: 40px; }
+    footer p { font-size: 13px; color: rgba(255,255,255,.3); font-weight: 500; }
+
+    /* ── RESPONSIVE ────────────────────────────────────────── */
+    @media (max-width: 860px) {
+      .nav { padding: 14px 24px; }
+
+      .hero-image-badge { bottom: 20px; left: 20px; }
+
+      .intro { padding: 64px 0 56px; }
+
+      .coming-cards { grid-template-columns: 1fr; }
+
+      .about-strip-inner { flex-direction: column; gap: 28px; align-items: flex-start; }
+
+      .signup-inner { grid-template-columns: 1fr; gap: 48px; }
+      .signup-form-wrap { padding: 36px 28px; }
+
+      footer { flex-direction: column; align-items: center; text-align: center; padding: 28px 24px; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- ── NAV ──────────────────────────────────────────────── -->
+<nav class="nav">
+  <a href="#" class="nav-logo">
+    <img src="LOGO/PNG/TRBP LOGO-02.png" alt="The Raising Bilinguals Podcast">
+  </a>
+</nav>
+
+<!-- ── HERO IMAGE — full width ──────────────────────────── -->
+<div class="hero-image">
+  <img src="ARTES/02.jpg" alt="David and Ana — The Raising Bilinguals Podcast">
+  <div class="hero-image-badge">
+    <div class="hero-image-badge-label">Coming to</div>
+    <div class="hero-image-badge-value">All Major Platforms</div>
+  </div>
+</div>
+
+<!-- ── STRIP ────────────────────────────────────────────── -->
+<div class="strip" aria-hidden="true">
+  <div class="strip-track">
+    <span class="strip-item">Something Big Is Coming</span>
+    <span class="strip-item">Bilingual Families</span>
+    <span class="strip-item">Podcast · YouTube · Community · App</span>
+    <span class="strip-item">Be the First to Know</span>
+    <span class="strip-item">The Raising Bilinguals Podcast</span>
+    <span class="strip-item">Something Big Is Coming</span>
+    <span class="strip-item">Bilingual Families</span>
+    <span class="strip-item">Podcast · YouTube · Community · App</span>
+    <span class="strip-item">Be the First to Know</span>
+    <span class="strip-item">The Raising Bilinguals Podcast</span>
+  </div>
+</div>
+
+<!-- ── INTRO ─────────────────────────────────────────────── -->
+<section class="intro">
+  <div class="container">
+    <div class="intro-inner">
+      <span class="coming-soon-badge">Coming Soon</span>
+      <h1 class="intro-title">
+        The home for parents<br>
+        raising <em>bilingual kids</em> —<br>
+        built together.
+      </h1>
+      <p class="intro-lead">
+        We're David &amp; Ana — parents, podcasters, and the creators of <strong>How to Spanish Podcast</strong>. We're building a new space dedicated to the beautiful, messy, joyful journey of raising bilingual children. A podcast, a community, and an app. All in one place.
+      </p>
+      <div class="platforms-row">
+        <span class="platforms-label">Available on</span>
+        <span class="platform-pill">
+          <!-- Spotify -->
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.4 0 0 5.4 0 12s5.4 12 12 12 12-5.4 12-12S18.66 0 12 0zm5.521 17.34c-.24.359-.66.48-1.021.24-2.82-1.74-6.36-2.101-10.561-1.141-.418.122-.779-.179-.899-.539-.12-.421.18-.78.54-.9 4.56-1.021 8.52-.6 11.64 1.32.42.18.479.659.301 1.02zm1.44-3.3c-.301.42-.841.6-1.262.3-3.239-1.98-8.159-2.58-11.939-1.38-.479.12-1.02-.12-1.14-.6-.12-.48.12-1.021.6-1.141C9.6 9.9 15 10.561 18.72 12.84c.361.181.54.78.241 1.2zm.12-3.36C15.24 8.4 8.82 8.16 5.16 9.301c-.6.179-1.2-.181-1.38-.721-.18-.601.18-1.2.72-1.381 4.26-1.26 11.28-1.02 15.721 1.621.539.3.719 1.02.419 1.56-.299.421-1.02.599-1.559.3z"/></svg>
+          Spotify
+        </span>
+        <span class="platform-pill">
+          <!-- Apple Podcasts -->
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M5.34 0A5.328 5.328 0 000 5.34v13.32A5.328 5.328 0 005.34 24h13.32A5.328 5.328 0 0024 18.66V5.34A5.328 5.328 0 0018.66 0zm6.525 2.568c2.336 0 4.448.902 6.056 2.587 1.224 1.272 1.912 2.599 2.287 4.337.144.676.144 2.265.003 2.942-.616 2.996-2.748 5.3-5.679 6.194-.387.12-.497.127-.806.073a1.072 1.072 0 01-.862-.997c0-.52.303-.953.806-1.149.1-.038.383-.117.625-.173 2.457-.577 4.312-2.759 4.484-5.262.03-.432.02-.528-.058-1.036-.313-2.028-1.596-3.749-3.46-4.655-.689-.335-1.316-.49-2.136-.527-.89-.038-1.559.08-2.324.411-2.057.899-3.431 2.945-3.432 5.168 0 .492.098 1.178.24 1.664.265.9.927 1.913 1.687 2.588l.294.261c.294.268.407.498.407.82 0 .535-.42.99-.953 1.026-.419.03-.681-.1-1.108-.535-1.485-1.506-2.321-3.368-2.464-5.493-.033-.493-.02-.647.077-1.183.468-2.619 2.076-4.756 4.438-5.9.87-.42 1.67-.63 2.638-.694.16-.01.323-.014.485-.014zm0 3.959a3.46 3.46 0 013.46 3.46 3.46 3.46 0 01-3.46 3.46 3.46 3.46 0 01-3.46-3.46 3.46 3.46 0 013.46-3.46zm.03 5.789c.528 0 .927.237 1.174.673.176.308.197.413.197 2.125 0 1.891-.013 1.975-.253 2.323a1.105 1.105 0 01-1.988-.042c-.224-.38-.226-.408-.226-2.28 0-1.871.002-1.9.225-2.278.232-.399.578-.52 1.08-.521h-.21z"/></svg>
+          Apple Podcasts
+        </span>
+        <span class="platform-pill">
+          <!-- YouTube -->
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M10 16.5l6-4.5-6-4.5v9zm11.56-7.83c.13.47.22 1.1.28 1.9.07.8.1 1.49.1 2.09L22 13c0 2.19-.16 3.8-.44 4.83-.25.9-.83 1.48-1.73 1.73-.47.13-1.33.22-2.65.28-1.3.07-2.49.1-3.59.1L12 20c-4.19 0-6.8-.16-7.83-.44-.9-.25-1.48-.83-1.73-1.73-.13-.47-.22-1.1-.28-1.9C2.09 15.2 2 14.51 2 13.91L2 13c0-2.19.16-3.8.44-4.83.25-.9.83-1.48 1.73-1.73.47-.13 1.33-.22 2.65-.28 1.3-.07 2.49-.1 3.59-.1L12 6c4.19 0 6.8.16 7.83.44.9.25 1.48.83 1.73 1.73z"/></svg>
+          YouTube
+        </span>
+        <span class="platform-pill">
+          <!-- All Podcast Apps -->
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 1a11 11 0 1 0 0 22A11 11 0 0 0 12 1zm-1.5 15.5v-9l7 4.5-7 4.5z"/></svg>
+          All Podcast Apps
+        </span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── WHAT'S COMING ────────────────────────────────────── -->
+<section class="whats-coming">
+  <div class="container">
+    <span class="tag tag-yellow section-label" style="display: table; margin: 0 auto 18px;">What's coming</span>
+    <h2 class="section-title">Everything you need for your bilingual home.</h2>
+    <p class="section-sub">We're building three things to support you at every step of the journey. Here's a peek at what's ahead.</p>
+
+    <div class="coming-cards">
+      <div class="coming-card">
+        <div class="coming-card-icon">🎙️</div>
+        <span class="coming-card-label">Launching Soon</span>
+        <div class="coming-card-title">The Podcast</div>
+        <p class="coming-card-text">Real conversations about what it actually takes to raise a bilingual child — strategies, wins, and messy moments. Available on Spotify, Apple Podcasts, YouTube, and everywhere you listen. No fluff, just the good stuff.</p>
+      </div>
+
+      <div class="coming-card">
+        <div class="coming-card-icon">🤝</div>
+        <span class="coming-card-label">Coming Soon</span>
+        <div class="coming-card-title">The Community</div>
+        <p class="coming-card-text">A warm, private space for parents who are on the exact same journey. Ask questions, share wins, get support on the hard days — from people who truly get it. Powered by Mighty Networks.</p>
+      </div>
+
+      <div class="coming-card">
+        <div class="coming-card-icon">📱</div>
+        <span class="coming-card-label">In Development</span>
+        <div class="coming-card-title">The App</div>
+        <p class="coming-card-text">Amazing Tools like instant vocabulary to target language, and resources in one beautiful app. Daily bilingual activity ideas, progress tracking, and community access — right in your pocket. Available for iOS &amp; Android.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── ABOUT STRIP ───────────────────────────────────────── -->
+<section class="about-strip">
+  <div class="container">
+    <div class="about-strip-inner">
+      <div class="about-hosts">
+        <div class="host-thumb">
+          <img src="FOTOS HOSTS/DSC05527.JPG" alt="Ana">
+        </div>
+        <div class="host-thumb">
+          <img src="FOTOS HOSTS/DSC05548.JPG" alt="David">
+        </div>
+      </div>
+      <div class="about-strip-text">
+        <h3>We're David &amp; Ana.<br>We've been here before.</h3>
+        <p>You might know us from <strong>How to Spanish Podcast</strong>, a podcast that has helped thousands of people connect with the Spanish language. Now we're turning that same honesty and heart toward something even closer to home.</p>
+        <div class="hts-tag">
+          🎙️ Also creators of <strong>How to Spanish Podcast</strong>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── SIGN UP ───────────────────────────────────────────── -->
+<section class="signup" id="signup">
+  <div class="container">
+    <div class="signup-inner">
+
+      <div class="signup-copy">
+        <span class="tag tag-green section-label">Get Early Access</span>
+        <h2 class="section-title">Be the first to know<br>when we launch.</h2>
+        <p class="section-sub">Leave your email and we'll reach out the moment we're live — before anyone else. No spam, just the big news when it happens.</p>
+        <div class="perks-list">
+          <div class="perk-item"><div class="perk-dot"></div>Early access to the community before public launch</div>
+          <div class="perk-item"><div class="perk-dot"></div>First listen to new podcast episodes</div>
+          <div class="perk-item"><div class="perk-dot"></div>Founding member perks</div>
+          <div class="perk-item"><div class="perk-dot"></div>Updates from David &amp; Ana directly to your inbox</div>
+        </div>
+      </div>
+
+      <div class="signup-form-wrap">
+        <h3>Count me in —<br>notify me at launch!</h3>
+        <p>Join our early access list. We'll let you know as soon as things go live.</p>
+
+        <form id="brevo-form" novalidate>
+          <div class="form-group">
+            <label for="field-firstname">First Name</label>
+            <input type="text" id="field-firstname" name="FIRSTNAME" placeholder="Your first name" autocomplete="given-name">
+          </div>
+          <div class="form-group">
+            <label for="field-email">Email Address <span style="color: var(--red);">*</span></label>
+            <input type="email" id="field-email" name="EMAIL" placeholder="you@example.com" required autocomplete="email">
+          </div>
+          <button type="submit" class="form-submit" id="submit-btn">Notify Me at Launch →</button>
+          <p class="form-note">No spam, ever. Unsubscribe anytime.</p>
+          <p class="form-error-msg" id="form-error">Something went wrong. Please try again.</p>
+        </form>
+
+        <div class="form-success" id="form-success">
+          <div class="success-icon">🎉</div>
+          <h4>You're on the list!</h4>
+          <p>We'll reach out as soon as we launch. Thank you — we can't wait to share this with you.</p>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ── FOOTER ────────────────────────────────────────────── -->
+<footer>
+  <img src="LOGO/PNG/TRBP LOGO-02.png" alt="The Raising Bilinguals Podcast">
+  <p>&copy; 2026 The Raising Bilinguals Podcast &middot; All rights reserved.</p>
+</footer>
+
+<!-- ── BREVO FORM SCRIPT ─────────────────────────────────── -->
+<!--
+  SETUP INSTRUCTIONS:
+  1. Log in to your Brevo account at app.brevo.com
+  2. Go to Contacts → Lists → create a list (e.g. "Raising Bilinguals Early Access")
+     Note the numeric list ID in the URL when you open it
+  3. Go to your Profile → SMTP & API → API Keys → create a key
+  4. Replace YOUR_BREVO_API_KEY and YOUR_LIST_ID below
+-->
+<script>
+  const BREVO_API_KEY = 'YOUR_BREVO_API_KEY'; // ← replace this
+  const BREVO_LIST_ID = 0;                     // ← replace with your list ID (number)
+
+  const form      = document.getElementById('brevo-form');
+  const submitBtn = document.getElementById('submit-btn');
+  const success   = document.getElementById('form-success');
+  const errorMsg  = document.getElementById('form-error');
+
+  form.addEventListener('submit', async (e) => {
+    e.preventDefault();
+    errorMsg.style.display = 'none';
+
+    const email     = document.getElementById('field-email').value.trim();
+    const firstname = document.getElementById('field-firstname').value.trim();
+
+    if (!email || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+      errorMsg.textContent = 'Please enter a valid email address.';
+      errorMsg.style.display = 'block';
+      return;
+    }
+
+    submitBtn.disabled = true;
+    submitBtn.textContent = 'Adding you…';
+
+    const payload = {
+      email,
+      attributes: firstname ? { FIRSTNAME: firstname } : {},
+      listIds: [BREVO_LIST_ID],
+      updateEnabled: true,
+    };
+
+    try {
+      const res = await fetch('https://api.brevo.com/v3/contacts', {
+        method: 'POST',
+        headers: {
+          'accept': 'application/json',
+          'content-type': 'application/json',
+          'api-key': BREVO_API_KEY,
+        },
+        body: JSON.stringify(payload),
+      });
+
+      if (res.ok || res.status === 204) {
+        form.style.display = 'none';
+        success.style.display = 'block';
+      } else {
+        const data = await res.json().catch(() => ({}));
+        throw new Error(data.message || `Error ${res.status}`);
+      }
+    } catch (err) {
+      console.error('Brevo error:', err);
+      errorMsg.textContent = 'Something went wrong. Please try again.';
+      errorMsg.style.display = 'block';
+      submitBtn.disabled = false;
+      submitBtn.textContent = 'Notify Me at Launch →';
+    }
+  });
+</script>
+
+</body>
+</html>
